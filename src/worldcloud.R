@@ -9,11 +9,11 @@ library("wordcloud")
 library("RColorBrewer")
 
 # Read the text file from internet, this is on tutorial
-filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"
-text <- readLines(filePath)
+#filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"
+#text <- readLines(filePath)
 
-#Load the file with phreases in a text var.
-#text <- readLines(file.choose())
+#Load the file with phreases in a text archive that you will choose.
+text <- readLines(file.choose())
 
 #Load data as a corpus.
 #Corpus is a list of documents, in this case is only one document.
@@ -36,7 +36,7 @@ docs <- tm_map(docs, content_transformer(tolower))
 docs <- tm_map(docs, removeNumbers)
 
 # Remove english common stopwords.
-docs <- tm_map(docs, removeWords, stopwords("english"))
+docs <- tm_map(docs, removeWords, stopwords("portuguese"))
 
 # specify your stopwords as a character vector - I didn't use here.
 #docs <- tm_map(docs, removeWords, c("blabla1", "blabla2"))
@@ -67,7 +67,3 @@ head(d, count_words)
 
 set.seed(1234)
 wordcloud(words = d$word, freq = d$freq, min.freq = 1, max.words = 200, random.order = FALSE, rot.per = 0.35, colors = brewer.pal(8,"Dark2"))
-
-
-
-

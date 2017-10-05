@@ -63,7 +63,7 @@ count_words <- 10
 
 head(d, count_words)
 
-#----------------- Now we will generate our w.cloud
+#----------------- Now we will generate our w.cloud and save in a image 
 
 set.seed(1234)
 dev.copy(png,'wordcloud.png')

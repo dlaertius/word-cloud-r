@@ -2,11 +2,11 @@
 # Diogenes, 03-25-2017
 
 #Load needed libraries. If you will use portuguese phrases, some steps isn't necessary cause won't work to this lang.
-library("tm")
 library("NLP")
+library("tm")
 library("SnowballC")
-library("wordcloud")
 library("RColorBrewer")
+library("wordcloud")
 
 # Read the text file from internet, this is on tutorial
 #filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"
@@ -63,7 +63,9 @@ count_words <- 10
 
 head(d, count_words)
 
-#----------------- Now we will generate our w.cloud
+#----------------- Now we will generate our w.cloud and save in a image 
 
 set.seed(1234)
+dev.copy(png,'wordcloud.png')
 wordcloud(words = d$word, freq = d$freq, min.freq = 1, max.words = 200, random.order = FALSE, rot.per = 0.35, colors = brewer.pal(8,"Dark2"))
+dev.off()
